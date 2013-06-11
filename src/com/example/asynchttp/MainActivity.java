@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -18,14 +19,17 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         final TextView textView1 = (TextView) findViewById(R.id.textView);
+        final EditText editText = (EditText) findViewById(R.id.editText);
         
         Button button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+                String url = editText.getText().toString();
 		        AsyncHttpClient client = new AsyncHttpClient();
-		        client.get("http://www.google.com", new AsyncHttpResponseHandler() {
+                //client.get("http://www.google.com", new AsyncHttpResponseHandler() {
+		        client.get(url, new AsyncHttpResponseHandler() {
 		            @Override
 		            public void onSuccess(String response) {
 //		                System.out.println(response);
